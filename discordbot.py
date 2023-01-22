@@ -8,22 +8,36 @@ load_dotenv()
 PREFIX = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
 
-client = discord.Client()
+client = commands.Bot(command_prefix='/',intents=discord.Intents.all())
 
 @client.event
 async def on_ready():
-    print(f'Logged in as {client.user}.')
+    await client.change_presence(status = discord.Status.dnd, activity = discord.Game("멍멍..."))
+  
+
 
 @client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    if message.content == f'{PREFIX}call':
-        await message.channel.send("callback!")
-
-    if message.content.startswith(f'{PREFIX}hello'):
-        await message.channel.send('Hello!')
+async def on_message(message) :
+    if "씨발" in message.content :
+        await message.delete()
+        await message.author.send("욕설 나빠 멍멍")
+        await message.logchan.send(em = discord.Embed(title = "멍멍", description = f"{message.author.mention} 욕설사용"))
+    elif "병신" in message.content :
+        await message.delete()
+        await message.author.send("욕설 나빠 멍멍")
+        await message.logchan.send(em = discord.Embed(title = "멍멍", description = f"{message.author.mention} 욕설사용"))
+    elif "개새끼" in message.content :
+        await message.delete()
+        await message.author.send("욕설 나빠 멍멍")
+        await message.logchan.send(em = discord.Embed(title = "멍멍", description = f"{message.author.mention} 욕설사용"))
+    elif "니엄마" in message.content :
+        await message.delete()
+        await message.author.send("멍멍 너 정지")
+        await message.logchan.send(em = discord.Embed(title = "멍멍", description = f"{message.author.mention} 욕설사용"))
+    elif "니애미" in message.content :
+        await message.delete()
+        await message.author.send("멍멍 너 정지")
+        await message.logchan.send(em = discord.Embed(title = "멍멍", description = f"{message.author.mention} 욕설사용"))
 
 
 try:
